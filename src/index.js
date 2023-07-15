@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, EmbedBuilder, PermissionsBitField, Permissions, MessageManager, Embed, Collection } = require(`discord.js`);
+const { Client, GatewayIntentBits, EmbedBuilder, PermissionsBitField, Permissions, MessageManager, Embed, Collection, interactionBitField } = require(`discord.js`);
 const fs = require('fs');
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 
@@ -18,3 +18,17 @@ const commandFolders = fs.readdirSync("./src/commands");
   client.handleCommands(commandFolders, "./src/commands");
   client.login(process.env.token)
 })();
+
+client.on('interactionCreate', async (interaction) => {
+  if (!interaction.isModalSubmit()) return;
+
+  if (interaction.customId === 'modal') {
+    await interaction.reply({ content: "good modal", ephemeral: true });
+
+    const namereport = interaction.fields.getTextInputValue('name')
+    const aboutreport = interaction.fields.getTextInputValue('about')
+
+
+
+  }
+});
