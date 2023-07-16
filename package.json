@@ -18,6 +18,7 @@
     "discord-api-types": "^0.37.48",
     "discord.js": "^14.11.0",
     "dotenv": "^16.3.1",
+    "mysql2": "^3.5.1",
     "node-fetch": "^3.2.6",
     "quick.db": "^9.1.7",
     "quickdb": "^1.0.5"

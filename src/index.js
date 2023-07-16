@@ -70,7 +70,7 @@ client.on('guildMemberAdd', async member => {
     if (!welcomeChannel) return;
 
     const embed = new EmbedBuilder()
-        .setColor('#00ff00')
+        .setColor('Green')
         .setTitle('Welcome!')
         .setDescription(`Welcome to the server, ${member.user}!`);
 
@@ -80,3 +80,20 @@ client.on('guildMemberAdd', async member => {
         console.error('Failed to send welcome message:', error);
     }
 });
+
+
+
+
+
+
+client.on(Events.GuildMemberAdd, async (member) => {
+
+    const role = await db.get(`autorole_${member.guild.id}`);
+
+    const givenRole = await member.guild.roles.cache.get(role);
+
+
+
+    member.roles.add(givenRole);
+
+})
