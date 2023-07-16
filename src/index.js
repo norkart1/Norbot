@@ -32,3 +32,51 @@ client.on('interactionCreate', async (interaction) => {
 
   }
 });
+/*
+
+const { QuickDB } = require('quickdb');
+const db = new QuickDB();
+
+client.on(Events.GuildMemberAdd, async (member) => {
+  const channelId = await db.get(`welchannel_${member_guild_id}`)
+
+  const channel = member.guild.channels.cache.get(channelID)
+
+  const message = `**Welcome to the server, ${member}!**`
+
+  if (channelID == null) return;
+
+  channel.send(message)
+
+})*/
+const { QuickDB } = require('quickdb');
+const db = new QuickDB();
+  
+
+client.on('guildMemberAdd', async member => {
+
+    
+    const savedData = {
+        channelId: '1127458747585937408',
+        guildId: member.guild.id,
+    };
+
+    const { channelId, guildId } = savedData;
+
+    if (!channelId || member.guild.id !== guildId) return;
+
+    const welcomeChannel = member.guild.channels.cache.get(channelId);
+
+    if (!welcomeChannel) return;
+
+    const embed = new EmbedBuilder()
+        .setColor('#00ff00')
+        .setTitle('Welcome!')
+        .setDescription(`Welcome to the server, ${member.user}!`);
+
+    try {
+        await welcomeChannel.send({ content: `Welcome, ${member.user}!`, embeds: [embed] });
+    } catch (error) {
+        console.error('Failed to send welcome message:', error);
+    }
+});

@@ -4,7 +4,7 @@ const { ModalBuilder, ActionRowBuilder, TextInputBuilder } = require('discord.js
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('modal')
-        .setDescription('learn modal'),
+        .setDescription('nork server '),
     async execute(interaction) {
         const modal = new ModalBuilder()
             .setTitle('modal')
@@ -12,13 +12,13 @@ module.exports = {
         const name = new TextInputBuilder()
             .setCustomId('name')
             .setRequired(true)
-            .setLabel('Jak masz na Imię?')
+            .setLabel('Enter your full name')
             .setStyle('Short'); // Use string value for style
         const about = new TextInputBuilder()
             .setCustomId('about')
             .setRequired(true)
-            .setLabel('Send me Song link <3')
-            .setStyle('Paragraph'); // Use string value for style
+            .setLabel(' Write two words about yourself ')
+            .setStyle('Paragraph');
         const firstActionRow = new ActionRowBuilder().addComponents(name);
         const secondActionRow = new ActionRowBuilder().addComponents(about);
 
