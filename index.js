@@ -23,3 +23,4 @@ client.login(client.config.token).then(() => {
   loadEvents(client);
   loadCommands(client);
 });
+//bot
